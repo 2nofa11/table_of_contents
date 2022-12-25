@@ -1,4 +1,4 @@
-import { fetchOpenDB } from "./openDB";
+import { extractTextContents, fetchOpenDB } from "./openDB";
 // import axios from "axios";
 import axios from "axios";
 import { mockData } from "./mock_data/responseMock";
@@ -9,13 +9,15 @@ jest.mock("axios");
 (axios.get as any).mockResolvedValue({ data: [mockData] });
 
 describe("fetchOpenDB test", () => {
-  it("", async () => {
+  it("mockのデータをレスポンスで出力できているか確認", async () => {
     const res = await fetchOpenDB();
-    const tableOfContent: TextContent[] =
-      res[0].onix.CollateralDetail.TextContent.filter((content) => {
-        return content.TextType === "04";
-      });
-    console.log(JSON.stringify(tableOfContent));
-    expect(tableOfContent[0].Text).toBe("ここに目次情報");
+    expect(res[0]).toEqual(mockData);
+  });
+});
+
+describe("extractTextContents", () => {
+  it("目次情報を抽出できるか確認", async () => {
+    const res = await extractTextContents();
+    expect(res[0].Text).toBe("ここに目次情報");
   });
 });
