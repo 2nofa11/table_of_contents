@@ -1,4 +1,4 @@
-export type openDBType = {
+export type OpenDBType = {
   onix: {
     RecordReference: string;
     NotificationType: string;
@@ -146,4 +146,10 @@ export type openDBType = {
     cover: string;
     author: string;
   };
+};
+
+export type TextContent = {
+  TextType: string;
+  ContentAudience: string;
+  Text: string;
 };
