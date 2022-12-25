@@ -6,9 +6,9 @@ import { TextContent } from "./openDB-type";
 
 jest.mock("axios");
 
-(axios.get as any).mockResolvedValue({ data: [mockData] });
+describe("目次情報がある場合", () => {
+  (axios.get as any).mockResolvedValue({ data: [mockData] });
 
-describe("fetchOpenDB test", () => {
   it("mockのデータをレスポンスで出力できているか確認", async () => {
     const res = await fetchOpenDB();
     expect(res[0]).toEqual(mockData);
@@ -19,5 +19,16 @@ describe("extractTextContents", () => {
   it("目次情報を抽出できるか確認", async () => {
     const res = await extractTextContents();
     expect(res[0].Text).toBe("ここに目次情報");
+  });
+});
+
+describe("目次情報がない場合", () => {
+  it("mockのデータをレスポンスで出力できているか確認", async () => {});
+});
+
+describe("extractTextContents", () => {
+  it("目次情報を抽出できるか確認", async () => {
+    const res = await extractTextContents();
+    expect(res.length).toBe(0);
   });
 });
