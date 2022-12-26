@@ -2,7 +2,7 @@ import { extractTextContents, fetchOpenDB } from "./openDB";
 // import axios from "axios";
 import axios from "axios";
 import { mockData } from "./mock_data/responseMock";
-import { TextContent } from "./openDB-type";
+import { OpenDBType } from "./openDB-type";
 
 jest.mock("axios");
 
@@ -23,12 +23,7 @@ describe("extractTextContents", () => {
 });
 
 describe("目次情報がない場合", () => {
-  it("mockのデータをレスポンスで出力できているか確認", async () => {});
-});
-
-describe("extractTextContents", () => {
-  it("目次情報を抽出できるか確認", async () => {
-    const res = await extractTextContents();
-    expect(res.length).toBe(0);
+  it("mockのデータをレスポンスで出力できているか確認", async () => {
+    (axios.get as any).mockResolvedValue({ data: [mockData] });
   });
 });
