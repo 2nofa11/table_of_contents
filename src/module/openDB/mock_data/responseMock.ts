@@ -79,3 +79,8 @@ export const mockData = {
     author: "田中潔／著 田中義麿／著",
   },
 };
+
+export const mockDataNoTOC = {
+  ...mockData,
+  onix: { CollateralDetail: { TextContent: [] } },
+};
