@@ -19,8 +19,7 @@ const displayTextContents = (tabelOfContent: TextContent[]) => {
     <SearchBox @text-contents="displayTextContents" />
   </div>
   <DisplayModal
-    :is-visible="isModal"
-    :text-of-content="content"
+    :prop-data="{ isVisible: isModal, textOfContent: content }"
     @close="isModal = false"
   ></DisplayModal>
 </template>

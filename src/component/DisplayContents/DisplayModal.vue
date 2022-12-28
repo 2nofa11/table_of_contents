@@ -1,7 +1,9 @@
 <script setup lang="ts">
 interface Props {
-  isVisible: boolean;
-  textOfContent: string;
+  propData: {
+    isVisible: boolean;
+    textOfContent: string;
+  };
 }
 interface Emits {
   (e: "close"): void;
@@ -15,12 +17,12 @@ const emit = defineEmits<Emits>();
     <div
       class="modal"
       id="sample-modal"
-      v-show="isVisible"
+      v-show="propData.isVisible"
       @click="emit('close')"
     ></div>
-    <div class="modal-content" v-show="isVisible">
+    <div class="modal-content" v-show="propData.isVisible">
       <div class="box">
-        <pre>{{ textOfContent }}</pre>
+        <pre>{{ propData.textOfContent }}</pre>
       </div>
     </div>
   </teleport>
