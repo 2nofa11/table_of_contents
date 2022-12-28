@@ -17,8 +17,9 @@ const emit = defineEmits<Emits>();
       id="sample-modal"
       v-show="isVisible"
       @click="emit('close')"
-    >
-      <div class="modal-content" v-show="isVisible">
+    ></div>
+    <div class="modal-content" v-show="isVisible">
+      <div class="box">
         <pre>{{ textOfContent }}</pre>
       </div>
     </div>
@@ -40,10 +41,25 @@ const emit = defineEmits<Emits>();
 }
 
 .modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   background-color: white;
   width: 600px;
-  height: auto;
+  height: 700px;
   border-radius: 20px;
   padding: 20px;
+}
+.box {
+  overflow-y: scroll;
+}
+.box::-webkit-scrollbar {
+  display: none;
 }
 </style>
