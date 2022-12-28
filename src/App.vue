@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { extractTextContents } from "./module/openDB/openDB";
+import SearchBox from "./component/SearchBox/SearchBox.vue";
 </script>
 
 <template>
-  <button @click="extractTextContents">おす</button>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <div class="container mx-auto">
+    <SearchBox />
+  </div>
 </template>
 
 <style scoped></style>
