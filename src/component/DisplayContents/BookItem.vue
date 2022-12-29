@@ -1,10 +1,23 @@
 <script setup lang="ts">
-import { FilteredBookInfo } from "@/module/googleBooks/googleBooks";
-
+import { FilteredBookInfo } from "../../module/googleBooks/googleBooks";
+import { TextContent } from "../../module/openDB/openDB-type";
+import { extractTextContents } from "../../module/openDB/openDB";
+interface Emits {
+  (e: "textContents", value: TextContent[]): void;
+}
 type Props = {
   book: FilteredBookInfo;
 };
+
+const emit = defineEmits<Emits>();
 const props = defineProps<Props>();
+const searchTextContents = async (isbn: string) => {
+  const result = await extractTextContents(isbn);
+  if (result.length === 0) {
+    return emit("textContents", []);
+  }
+  emit("textContents", result);
+};
 </script>
 
 <template>
@@ -26,7 +39,9 @@ const props = defineProps<Props>();
         class="title-font text-lg font-medium text-gray-900 mb-3"
       ></h1>
       <div class="flex items-center flex-wrap">
-        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+        <a
+          class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+          @click="searchTextContents(book.isbn)"
           >目次を見る
           <svg
             class="w-4 h-4 ml-2"

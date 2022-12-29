@@ -6,6 +6,7 @@ export const extractTextContents = async (
 ): Promise<TextContent[]> => {
   const isbnNumber: number = Number(isbn);
   const openDBInfo = await fetchOpenDB(isbnNumber);
+  if (openDBInfo[0] === null) return [];
   const tableOfContent: TextContent[] =
     openDBInfo[0].onix.CollateralDetail.TextContent.filter((content) => {
       return content.TextType === "04";

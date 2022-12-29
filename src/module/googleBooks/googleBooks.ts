@@ -30,7 +30,7 @@ export type FilteredBookInfo = {
 
 const fetchGoogleBooks = async (query: string): Promise<googleBooksType> => {
   // APIを取得
-  const url = `https://www.googleapis.com/books/v1/volumes?q=title:${query}&maxResults=10`;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10`;
   const requestBookInfo = axios.get(url);
   const bookInfo = requestBookInfo.then(
     (response: AxiosResponse<googleBooksType>) => {

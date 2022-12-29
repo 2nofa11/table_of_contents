@@ -12,7 +12,10 @@ const isModal = ref<boolean>(false);
 const BooksList = ref<FilteredBookInfo[]>([]);
 
 const displayTextContents = (tableOfContent: TextContent[]) => {
-  content.value = tableOfContent[0].Text;
+  content.value =
+    tableOfContent.length === 0
+      ? "OpenDBに目次が存在しません"
+      : tableOfContent[0].Text;
   isModal.value = true;
 };
 const displayBooksInfo = (booksInfo: FilteredBookInfo[]) => {
@@ -23,7 +26,6 @@ const displayBooksInfo = (booksInfo: FilteredBookInfo[]) => {
 
 <template>
   <div class="container mx-auto">
-    <!-- <SearchBox @text-contents="displayTextContents" /> -->
     <SearchBox @books-info="displayBooksInfo" />
   </div>
   <DisplayModal
@@ -35,7 +37,7 @@ const displayBooksInfo = (booksInfo: FilteredBookInfo[]) => {
     <div class="container px-5 py-10 mx-auto">
       <div class="flex flex-wrap -m-4">
         <div v-for="book in BooksList" :key="book.isbn" class="p-4 md:w-1/3">
-          <BookItem :book="book" />
+          <BookItem :book="book" @text-contents="displayTextContents" />
         </div>
       </div>
     </div>
