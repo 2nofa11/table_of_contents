@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { TextContent } from "@/module/openDB/openDB-type";
 import { ref } from "vue";
-import { extractTextContents } from "../../module/openDB/openDB";
 import {
   extractBooksInfo,
   FilteredBookInfo,
