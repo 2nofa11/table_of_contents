@@ -14,7 +14,7 @@ export const extractBooksInfo = async (
       if (isbn.length === 0) return;
       return {
         title: book.volumeInfo.title,
-        image: book.volumeInfo.imageLinks.smallThumbnail,
+        image: book.volumeInfo.imageLinks.thumbnail,
         isbn: isbn[0].identifier,
       };
     })
