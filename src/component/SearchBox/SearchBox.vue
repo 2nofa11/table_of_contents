@@ -2,15 +2,20 @@
 import { TextContent } from "@/module/openDB/openDB-type";
 import { ref } from "vue";
 import { extractTextContents } from "../../module/openDB/openDB";
+import {
+  extractBooksInfo,
+  FilteredBookInfo,
+} from "../../module/googleBooks/googleBooks";
+
 import Icon from "./Parts/Icon.vue";
 interface Emits {
   (e: "textContents", value: TextContent[]): void;
+  (e: "booksInfo", value: FilteredBookInfo[]): void;
 }
 const isbn = ref<string>("");
 const emit = defineEmits<Emits>();
 const searchTextContents = async () => {
-  const result = await extractTextContents(isbn.value);
-  emit("textContents", result);
+  emit("booksInfo", await extractBooksInfo(isbn.value));
 };
 </script>
 
