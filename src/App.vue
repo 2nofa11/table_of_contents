@@ -34,9 +34,9 @@ const displayBooksInfo = (booksInfo: FilteredBookInfo[]) => {
   ></DisplayModal>
 
   <section class="text-gray-600 body-font">
-    <div class="container px-5 py-10 mx-auto">
+    <div class="container px-5 mx-auto">
       <div class="flex flex-wrap -m-4">
-        <div v-for="book in BooksList" :key="book.isbn" class="p-4 md:w-1/3">
+        <div v-for="book in BooksList" :key="book.isbn" class="p-4 md:w-1/4">
           <BookItem :book="book" @text-contents="displayTextContents" />
         </div>
       </div>
