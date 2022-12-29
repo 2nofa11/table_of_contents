@@ -22,26 +22,6 @@ export const extractBooksInfo = async (
   return filteredBooksInfo;
 };
 
-type UnknownObject<T extends Object> = {
-  [P in keyof T]: unknown;
-};
-function isFilteredBookInfo(obj: unknown): obj is FilteredBookInfo {
-  if (typeof obj !== "object") {
-    return false;
-  }
-  if (obj === null) {
-    return false;
-  }
-
-  const { title, image, isbn } = obj as UnknownObject<FilteredBookInfo>;
-
-  if (typeof title !== "string") false;
-  if (typeof image !== "string") false;
-  if (typeof isbn !== "string") false;
-
-  return true;
-}
-
 export type FilteredBookInfo = {
   title: string;
   image: string;
