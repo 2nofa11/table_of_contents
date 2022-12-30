@@ -28,9 +28,8 @@ const searchTextContents = async () => {
       />
     </label>
 
-    <!-- FIXME ボタンのデザイン -->
     <button
-      class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+      class="text-white bg-indigo-500 border-0 ml-1 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
       @click="searchTextContents"
     >
       検索
