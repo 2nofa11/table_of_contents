@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import SearchBox from "./component/SearchBox/SearchBox.vue";
-import DisplayModal from "./component/DisplayContents/DisplayModal.vue";
+import DisplayModal from "./component/Modal/DisplayModal.vue";
 import BookItem from "./component/DisplayContents/BookItem.vue";
 
 import { TextContent } from "./module/openDB/openDB-type";
