@@ -19,7 +19,7 @@ const displayTextContents = (tableOfContent: TextContent[]) => {
   isModal.value = true;
 };
 const displayBooksInfo = (booksInfo: FilteredBookInfo[]) => {
-  console.log(booksInfo);
+  if (booksInfo.length === 0) return alert("該当する本が0件です");
   BooksList.value = booksInfo;
 };
 </script>

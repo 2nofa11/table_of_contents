@@ -12,6 +12,8 @@ export const extractBooksInfo = async (
         (industryIdentifiers) => industryIdentifiers.type === "ISBN_13"
       );
       if (isbn.length === 0) return;
+      if (!book.volumeInfo.title || !book.volumeInfo.imageLinks.thumbnail)
+        return;
       return {
         title: book.volumeInfo.title,
         image: book.volumeInfo.imageLinks.thumbnail,
